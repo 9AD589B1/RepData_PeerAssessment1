@@ -61,12 +61,14 @@ Activity <- Activity %>%
 
 ### Plot a histogram to visualize the total number of steps taken each day
 
+
 #### Subset the Activity Data into Total Steps Per Day
 ```{r}
 StepsPerDay <- Activity %>%
                group_by(date) %>%
                summarise ( steps = sum ( steps ) )
 ```
+
 
 #### Intialize a Histogram to Create Frequency Labels
 ```{r, fig.keep = 'none', fig.show = 'hide'}
@@ -79,6 +81,7 @@ ActivityHist$density = ( ActivityHist$counts / sum ( ActivityHist$counts ) ) * 1
 #Create vector for frequency labels
 BarLabels <- paste ( round ( ActivityHist$density ), "%", sep = "" )
 ```
+
 
 #### Plot Formatted Histogram
 ```{r plot1}
@@ -105,7 +108,9 @@ Mean Steps Per Day:   `r as.factor(MeanStepsPerDay)`
 Median Steps Per Day: `r as.factor(MedianStepsPerDay)`
 
 
+
 ### Plot a Time-Series of Average Steps Per Interval
+
 
 #### Subset the Activity Data Into Average Steps Per Interval
 ```{r}
@@ -113,6 +118,7 @@ StepsPerInterval <- Activity %>%
                     group_by(interval) %>%
                     summarise ( steps = mean ( steps, na.rm = TRUE ) )
 ```
+
 
 #### Plot the Time Series
 ```{r plot2}
@@ -124,6 +130,7 @@ ggplot(data = StepsPerInterval, aes(x=interval, y=steps, group=1)) +
   theme(axis.text.x=element_text(angle=90, hjust=1), panel.grid.major =     element_blank(),   panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
 ```
 
+
 ### Determine the Interval with the Maximum Number of Steps
 ```{r}
 MaxStepsInterval <- StepsPerInterval %>% 
@@ -131,7 +138,10 @@ MaxStepsInterval <- StepsPerInterval %>%
                     select ( interval )
 ```
 
+
 On average across all the days in the dataset, the `r MaxStepsInterval` interval contains the maximum number of steps.
+
+
 
 #### Determine the total number of missing values in the dataset
 ```{r}
@@ -140,7 +150,10 @@ TotalActivityNA <- sum (is.na ( Activity ) )
 
 The total number of missing values in the dataset is `r TotalActivityNA`.
 
+
+
 ### Plot a Histogram with the Imputed Dataset
+
 
 #### Impute Missing Values in the Dataset and Create a New Data Set with Imputed Values
 ```{r}
@@ -153,12 +166,14 @@ ActivityFilled <- Activity %>%
                   mutate ( steps = ifelse ( is.na ( steps ), StepsFilled, steps ) )
 ```
 
+
 #### Subset the Activity Data into Total Steps Per Day
 ```{r}
 StepsPerDay2 <- ActivityFilled %>%
                group_by(date) %>%
                summarise ( steps = sum ( steps ) )
 ```
+
 
 #### Intialize a Histogram to Create Frequency Labels
 ```{r, fig.keep = 'none', fig.show = 'hide' }
@@ -171,6 +186,7 @@ ActivityHist2$density = ( ActivityHist2$counts / sum ( ActivityHist2$counts ) ) 
 #Create vector for frequency labels
 BarLabels2 <- paste ( round ( ActivityHist2$density ), "%", sep = "" )
 ```
+
 
 #### Plot Formatted Histogram
 ```{r plot3}
@@ -186,6 +202,7 @@ plot ( ActivityHist2,
       labels = BarLabels2 )
 ```
 
+
 ### Calculate the Mean and Median Steps Taken Each Day from the Imputed Data Set
 ```{r}
 MeanStepsPerDay2 <-  mean ( StepsPerDay2$steps, na.rm = TRUE )
@@ -198,7 +215,10 @@ Median Steps Per Day: `r as.factor(MedianStepsPerDay2)`
 
 As we can see, imputing values does effect measures of center, especially the mean. The mean from the imputed data is less as the imputing strategy used introduced values that effectively lowered the mean.
 
+
+
 ### Plot a Time-Series of Average Steps Per Interval for Weekdays and Weekends
+
 
 #### Subset the Activity Data Into Average Steps Per Interval for Weekdays and Weekends
 ```{r, echo=TRUE, message=FALSE}
@@ -207,6 +227,8 @@ StepsPerIntervalWday <- Activity %>%
                         group_by ( IsWeekDay, interval ) %>%
                         summarise ( steps = mean ( steps, na.rm = TRUE ) )
 ```
+
+
 #### Plot the Time Series
 ```{r plot4}
 ggplot(data = StepsPerIntervalWday, aes(x=interval, y=steps, group=1)) +
