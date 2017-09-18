@@ -158,22 +158,22 @@ install.packages(&quot;dplyr&quot;, repos = &quot;http://cran.us.r-project.org&q
 <pre><code>## package 'dplyr' successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\DK\AppData\Local\Temp\RtmpS0Cqtc\downloaded_packages</code></pre>
+##  C:\Users\DK\AppData\Local\Temp\RtmpkNytp8\downloaded_packages</code></pre>
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;, repos = &quot;http://cran.us.r-project.org&quot;)</code></pre>
 <pre><code>## package 'ggplot2' successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\DK\AppData\Local\Temp\RtmpS0Cqtc\downloaded_packages</code></pre>
+##  C:\Users\DK\AppData\Local\Temp\RtmpkNytp8\downloaded_packages</code></pre>
 <pre class="r"><code>install.packages(&quot;scales&quot;, repos = &quot;http://cran.us.r-project.org&quot;)</code></pre>
 <pre><code>## package 'scales' successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\DK\AppData\Local\Temp\RtmpS0Cqtc\downloaded_packages</code></pre>
+##  C:\Users\DK\AppData\Local\Temp\RtmpkNytp8\downloaded_packages</code></pre>
 <pre class="r"><code>install.packages(&quot;lubridate&quot;, repos = &quot;http://cran.us.r-project.org&quot;)</code></pre>
 <pre><code>## package 'lubridate' successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\DK\AppData\Local\Temp\RtmpS0Cqtc\downloaded_packages</code></pre>
+##  C:\Users\DK\AppData\Local\Temp\RtmpkNytp8\downloaded_packages</code></pre>
 <pre class="r"><code>suppressWarnings ( suppressMessages ( library ( dplyr) ) )
 suppressWarnings ( suppressMessages ( library ( ggplot2) ) )
 suppressWarnings ( suppressMessages ( library ( scales) ) )
@@ -266,6 +266,7 @@ MedianStepsPerDay &lt;- median ( StepsPerDay$steps, na.rm = TRUE )</code></pre>
 <h3>Plot a Histogram with the Imputed Dataset</h3>
 <div id="impute-missing-values-in-the-dataset-and-create-a-new-data-set-with-imputed-values" class="section level4">
 <h4>Impute Missing Values in the Dataset and Create a New Data Set with Imputed Values</h4>
+<p>To impute missing values, we will apply the respective weekly means to all NA values for the week in which they occur</p>
 <pre class="r"><code>#The imputing strategy is to apply the weekly means to all NA values
 ActivityFilled &lt;- Activity %&gt;%
                   mutate ( WeekBeginDate = paste ( year ( date ), week (date ) ) )   %&gt;%

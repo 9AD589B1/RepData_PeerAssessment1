@@ -158,6 +158,9 @@ The total number of missing values in the dataset is `r TotalActivityNA`.
 
 
 #### Impute Missing Values in the Dataset and Create a New Data Set with Imputed Values
+
+To impute missing values, we will apply the respective weekly means to all NA values for the week in which they occur
+
 ```{r}
 #The imputing strategy is to apply the weekly means to all NA values
 ActivityFilled <- Activity %>%

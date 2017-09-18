@@ -50,29 +50,28 @@ The analysis will cover:
     ## package 'dplyr' successfully unpacked and MD5 sums checked
     ## 
     ## The downloaded binary packages are in
-    ##  C:\Users\DK\AppData\Local\Temp\RtmpmymmzU\downloaded_packages
+    ##  C:\Users\DK\AppData\Local\Temp\Rtmpek8fji\downloaded_packages
 
     install.packages("ggplot2", repos = "http://cran.us.r-project.org")
 
-    ## package 'scales' successfully unpacked and MD5 sums checked
     ## package 'ggplot2' successfully unpacked and MD5 sums checked
     ## 
     ## The downloaded binary packages are in
-    ##  C:\Users\DK\AppData\Local\Temp\RtmpmymmzU\downloaded_packages
+    ##  C:\Users\DK\AppData\Local\Temp\Rtmpek8fji\downloaded_packages
 
     install.packages("scales", repos = "http://cran.us.r-project.org")
 
     ## package 'scales' successfully unpacked and MD5 sums checked
     ## 
     ## The downloaded binary packages are in
-    ##  C:\Users\DK\AppData\Local\Temp\RtmpmymmzU\downloaded_packages
+    ##  C:\Users\DK\AppData\Local\Temp\Rtmpek8fji\downloaded_packages
 
     install.packages("lubridate", repos = "http://cran.us.r-project.org")
 
     ## package 'lubridate' successfully unpacked and MD5 sums checked
     ## 
     ## The downloaded binary packages are in
-    ##  C:\Users\DK\AppData\Local\Temp\RtmpmymmzU\downloaded_packages
+    ##  C:\Users\DK\AppData\Local\Temp\Rtmpek8fji\downloaded_packages
 
     suppressWarnings ( suppressMessages ( library ( dplyr) ) )
     suppressWarnings ( suppressMessages ( library ( ggplot2) ) )
@@ -170,6 +169,9 @@ The total number of missing values in the dataset is 2304.
 ### Plot a Histogram with the Imputed Dataset
 
 #### Impute Missing Values in the Dataset and Create a New Data Set with Imputed Values
+
+To impute missing values, we will apply the respective weekly means to
+all NA values for the week in which they occur
 
     #The imputing strategy is to apply the weekly means to all NA values
     ActivityFilled <- Activity %>%
