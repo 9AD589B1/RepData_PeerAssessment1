@@ -2,7 +2,7 @@
 title: "Reproducible Research Course Project 1"
 author: "David Kochar"
 date: "September 16, 2017"
-output: html_document
+output: md_document
 ---
 
 ```{r setupknitr}
